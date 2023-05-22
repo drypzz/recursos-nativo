@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
   content:{
     padding: 10,
     fontSize: 15,
-    margin: 10,
     fontWeight: 'bold',
     textAlign: 'center',
     color: '#fff',
@@ -48,6 +47,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#606",
     paddingBottom: 5,
     paddingHorizontal: 5,
+  },
+  boxBattery: {
+    width: 300,
+    height: 50,
+    borderRadius: 10,
   },
 });
 
