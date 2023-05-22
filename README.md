@@ -3,7 +3,7 @@
 ## 📰 Informações
 
 - Version: 1.0.0
-- Date update: 17/04/23 - 14:45
+- Date update: 22/05/23 - 15:53
 
 ## 🚀 Tecnologias
 
