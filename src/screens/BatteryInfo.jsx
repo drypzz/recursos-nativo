@@ -17,7 +17,7 @@ export default function BatteryInfo() {
 
     async function getBatteryLevel() {
         const result = await Battery.getBatteryLevelAsync();
-        setBatteryLevel(result * 100)
+        setBatteryLevel(Math.round(result * 100))
     };
 
     function changeBackground() {
