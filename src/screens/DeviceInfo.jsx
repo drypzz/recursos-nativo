@@ -3,10 +3,10 @@ import * as Device from 'expo-device';
 import { View, Text, ScrollView } from 'react-native';
 
 import styles from '../styles/styles';
-import Footer from '../components/Footer';
+// import Footer from '../components/Footer';
 import Header from '../components/Header';
 
-function DeviceInfo({ navigation }){
+function DeviceInfo(){
     return (
         <ScrollView style={styles.container}>
             <View style={styles.container}>
