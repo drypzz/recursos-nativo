@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import * as Battery from 'expo-battery';
+import * as Notifications from 'expo-notifications';
+
 import { View, Text, Button } from 'react-native';
 
 import styles from '../styles/styles';
@@ -21,6 +23,7 @@ export default function BatteryInfo() {
     };
 
     function changeBackground() {
+
         if (batteryLevel < 20) {
             setBackground('red')
         } else if (batteryLevel < 50) {
@@ -30,6 +33,28 @@ export default function BatteryInfo() {
         } else {
             setBackground('green')
         };
+
+        if (batteryLevel >= 1) {
+            NotifyExpoBattery(batteryLevel)
+        }
+    };
+
+    async function NotifyExpoBattery(lvl){
+        await Notifications.scheduleNotificationAsync(
+            {
+                content: {
+                    title: 'Nivel da Bateria',
+                    body: 'Nivel da bateria em ' + lvl + '%',
+                    subtitle: 'Nivel da Bateria',
+                    data: {
+                        data: 'goes here'
+                    },
+                },
+                trigger: {
+                    seconds: 1
+                },
+            }
+        );
     };
 
     useEffect(() => {
