@@ -1,6 +1,6 @@
 import * as Notifications from 'expo-notifications';
 
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import { View, Text, Button } from 'react-native';
 
@@ -19,14 +19,16 @@ Notifications.setNotificationHandler({
 function Notify(){
 
     const [expoPushToken, setExpoPushToken] = useState('N/A');
+    const [counter, setCounter] = useState(0);
+    const [buttonDisabled, setButtonDisabled] = useState(false);
 
     async function NotifyExpo(){
         const token = await Notifications.scheduleNotificationAsync(
             {
                 content: {
-                    title: 'Titulo da notificação',
-                    body: 'Corpo da notificação',
-                    subtitle: 'Subtitulo da notificação',
+                    title: 'Titulo da notificação 0' + counter,
+                    body: 'Corpo da notificação 0' + counter,
+                    subtitle: 'Subtitulo da notificação 0' + counter,
                     data: {
                         data: 'goes here'
                     },
@@ -38,7 +40,22 @@ function Notify(){
         );
 
         setExpoPushToken(token);
+        setCounter(counter + 1);
+        setButtonDisabled(true);
+        setTimeout(() => {
+            setButtonDisabled(false)
+        }, 10000);
     };
+
+    const lastNotify = Notifications.useLastNotificationResponse();
+
+    const getLastNotification = async () => {
+        return (lastNotify !== null ? alert(lastNotify?.notification?.request?.content?.title + '\n\n' + lastNotify?.notification?.request?.content?.body) : alert('Nenhuma notificação encontrada'))
+    };
+
+    useEffect(() => {
+        getLastNotification()
+    }, [lastNotify]);
 
     return (
         <View style={styles.container}>
@@ -46,9 +63,9 @@ function Notify(){
                 <View style={styles.center}>
                     <Text>Expo Token: {expoPushToken}</Text>
 
-                    <Button title='Enviar Notificação' onPress={async () => NotifyExpo()}/>
+                    <Button disabled={buttonDisabled} title='Enviar Notificação' onPress={async () => NotifyExpo()}/>
 
-                    <Button title='Ler ultima notificações clicada' onPress={() => {}} />
+                    <Button title='Ler ultima notificações clicada' onPress={() => getLastNotification()} />
 
                     <Button title='Ler notificações não clicada' onPress={() => {}} />
 

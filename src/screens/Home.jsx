@@ -15,6 +15,7 @@ const Home = ({ navigation }) => {
                 <Button title='Informações da bateria' onPress={() => navigation.navigate('BatteryInfo')} />
                 <Button title='Orientação de tela' onPress={() => navigation.navigate('MyScreenOrientation')} />
                 <Button title='Notificações' onPress={() => navigation.navigate('Notify')} />
+                <Button title='Contatos' onPress={() => navigation.navigate('ContactsInfo')} />
             </View>
         </View>
     )

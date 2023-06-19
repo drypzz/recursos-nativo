@@ -8,6 +8,7 @@ import DeviceInfo from './screens/DeviceInfo';
 import BatteryInfo from './screens/BatteryInfo';
 import MyScreenOrientation from './screens/MyScreenOrientation';
 import Notify from './screens/Notify';
+import ContactsInfo from './screens/ContactsInfo';
 
 const Stack = createStackNavigator();
 
@@ -20,6 +21,7 @@ const RootNavigation = () => {
                 <Stack.Screen name='BatteryInfo' component={BatteryInfo} options={{headerShown: true}} />
                 <Stack.Screen name='MyScreenOrientation' component={MyScreenOrientation} options={{headerShown: true}} />
                 <Stack.Screen name='Notify' component={Notify} options={{headerShown: true}} />
+                <Stack.Screen name='ContactsInfo' component={ContactsInfo} options={{headerShown: true}} />
             </Stack.Navigator>
         </NavigationContainer>
     )
