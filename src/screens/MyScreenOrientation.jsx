@@ -3,7 +3,7 @@ import * as ScreenOrientation from 'expo-screen-orientation';
 import { View, Button, ScrollView } from 'react-native';
 
 import styles from '../styles/styles';
-// import Footer from '../components/Footer';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 
 function MyScreenOrientation(){
@@ -68,7 +68,7 @@ function MyScreenOrientation(){
                         <Button title='OTHER' onPress={() => defaultOrientation('OTHER')} />
                         <Button title='UNKNOWN' onPress={() => defaultOrientation('UNKNOWN')} />
                     </View>
-                {/* <Footer text='Sair' /> */}
+                <Footer text='Sair' />
             </View>
         </ScrollView>
     )

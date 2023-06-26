@@ -16,12 +16,12 @@ const RootNavigation = () => {
     return (
         <NavigationContainer>
             <Stack.Navigator>
-                <Stack.Screen name='Home' component={Home} options={{headerShown: true}} />
-                <Stack.Screen name='DeviceInfo' component={DeviceInfo} options={{headerShown: true}} />
-                <Stack.Screen name='BatteryInfo' component={BatteryInfo} options={{headerShown: true}} />
-                <Stack.Screen name='MyScreenOrientation' component={MyScreenOrientation} options={{headerShown: true}} />
-                <Stack.Screen name='Notify' component={Notify} options={{headerShown: true}} />
-                <Stack.Screen name='ContactsInfo' component={ContactsInfo} options={{headerShown: true}} />
+                <Stack.Screen name='Home' component={Home} options={{headerShown: false}} />
+                <Stack.Screen name='DeviceInfo' component={DeviceInfo} options={{headerShown: false}} />
+                <Stack.Screen name='BatteryInfo' component={BatteryInfo} options={{headerShown: false}} />
+                <Stack.Screen name='MyScreenOrientation' component={MyScreenOrientation} options={{headerShown: false}} />
+                <Stack.Screen name='Notify' component={Notify} options={{headerShown: false}} />
+                <Stack.Screen name='ContactsInfo' component={ContactsInfo} options={{headerShown: false}} />
             </Stack.Navigator>
         </NavigationContainer>
     )

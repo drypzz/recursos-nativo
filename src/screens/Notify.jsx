@@ -5,7 +5,7 @@ import React, {useEffect, useState} from 'react';
 import { View, Text, Button } from 'react-native';
 
 import styles from '../styles/styles';
-// import Footer from '../components/Footer';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 
 Notifications.setNotificationHandler({
@@ -70,7 +70,7 @@ function Notify(){
                     <Button title='Ler notificações não clicada' onPress={() => {}} />
 
                 </View>
-            {/* <Footer text='Sair' /> */}
+            <Footer text='Sair' />
         </View>
     )
 };

@@ -4,7 +4,7 @@ import { View, Text, FlatList } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 
 import Header from '../components/Header';
-// import Footer from '../components/Footer';
+import Footer from '../components/Footer';
 
 import { useCallback, useState } from 'react';
 
@@ -24,7 +24,6 @@ const ContactsInfo = () => {
             ]
         })
         setContacts(data);
-        console.log(data);
     }
 
     useFocusEffect(
@@ -59,6 +58,7 @@ const ContactsInfo = () => {
                     </>
                 }
             </View>
+            <Footer text='Sair' />
         </View>
     )
 }

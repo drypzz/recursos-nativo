@@ -1,13 +1,16 @@
 import * as React from 'react';
 import { View, Button } from 'react-native';
 
+import { useNavigation } from '@react-navigation/native';
+
 import styles from '../styles/styles';
 
-const Footer = ({ navigation }) => {
+const Footer = ({text}) => {
+    const navigation = useNavigation();
     return (
         <View>
             <View style={styles.footer}>
-                <Button title='Sair' onPress={() => navigation.navigate('Home')} />
+                <Button title={text} onPress={() => navigation.navigate('Home')} />
             </View>
         </View>
     )

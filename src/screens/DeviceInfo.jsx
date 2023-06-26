@@ -3,7 +3,7 @@ import * as Device from 'expo-device';
 import { View, Text, ScrollView } from 'react-native';
 
 import styles from '../styles/styles';
-// import Footer from '../components/Footer';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 
 function DeviceInfo(){
@@ -22,7 +22,7 @@ function DeviceInfo(){
                         <Text style={styles.content}>Fabricante: {Device.manufacturer}</Text>
                         <Text style={styles.content}>Arquitetura: {Device.supportedCpuArchitectures}</Text>
                     </View>
-                {/* <Footer text='Sair' /> */}
+                <Footer text='Sair' />
             </View>
         </ScrollView>
     )

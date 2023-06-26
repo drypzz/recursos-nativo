@@ -5,7 +5,7 @@ import * as Notifications from 'expo-notifications';
 import { View, Text, Button } from 'react-native';
 
 import styles from '../styles/styles';
-// import Footer from '../components/Footer';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 
 export default function BatteryInfo() {
@@ -70,7 +70,7 @@ export default function BatteryInfo() {
                 <Button title='Atualizar' onPress={getUpdateAll} />
                 <View style={[styles.boxBattery, {backgroundColor: getBackground, opacity: .2,}]}></View>
             </View>
-            {/* <Footer text='Sair' /> */}
+            <Footer text='Sair' />
         </View>
     )
 };
