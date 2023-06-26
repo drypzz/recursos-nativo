@@ -30,6 +30,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(120, 100, 161, .7)',
     borderRadius: 5,
   },
+  text: {
+    fontSize: 14,
+    padding: 2,
+    paddingLeft: 12,
+  },
   title:{
     marginTop: 10,
     color: 'white',

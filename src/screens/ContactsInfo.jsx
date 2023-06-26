@@ -1,16 +1,20 @@
 import * as Contacts from 'expo-contacts';
-import { View, Text, StyleSheet } from 'react-native';
-import Header from '../components/Header';
-// import Footer from '../components/footer';
 
-import { useCallback, useEffect, useState } from 'react';
-import { FlatList } from 'react-native-web';
+import { View, Text, FlatList } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
+
+import Header from '../components/Header';
+// import Footer from '../components/Footer';
+
+import { useCallback, useState } from 'react';
 
 import styles from '../styles/styles';
 
+import Items from '../components/Items';
 
-const  ContactsInfo = () => {
-    const [contacts, setContacts] = useState([{}]);
+
+const ContactsInfo = () => {
+    const [contacts, setContacts] = useState();
 
     async function loadContacts(){
         const { data } = await Contacts.getContactsAsync({
@@ -20,42 +24,40 @@ const  ContactsInfo = () => {
             ]
         })
         setContacts(data);
-        console.log(contacts);
+        console.log(data);
     }
 
-    useEffect((
-        useCallback(() => {(
-            async () => {
+    useFocusEffect(
+        useCallback(() => {
+            (async () => {
                 const { status } = await Contacts.requestPermissionsAsync();
                 if (status === 'granted') {
-                    loadContacts();
+                    await loadContacts();
                 }
-            })
-        })
-    ), []);
+            })();
+        }, [])
+    );
 
     return(
-        <View style={styles.container}>
-            <View  style={styles.container}>
-                <Header title='Contato' />
-                <View style={styles.center}>
-                    {contacts ?
-                        <FlatList
-                            style={{gap: 10, flex: 1}} 
-                            data={ contacts }
-                            keyExtractor={(item) => item.id.toString()}
-                            renderItem={({ item }) => (
-                                <Itens 
-                                    item = {item}
-                                />
-                            )}
-                        />
-                    :
-                        <>
-                            <Text style={styles.content}>Nada</Text>
-                        </>
-                    }
-                </View>
+        <View  style={styles.container}>
+            <Header title='Contato' />
+            <View style={styles.center}>
+                {contacts ?
+                    <FlatList
+                        style={{gap: 10, flex: 1}} 
+                        data={ contacts }
+                        keyExtractor={(item) => item.id.toString()}
+                        renderItem={({ item }) => (
+                            <Items 
+                                item = {item}
+                            />
+                        )}
+                    />
+                :
+                    <>
+                        <Text style={styles.content}>Não foi possivel carregar os itens.</Text>
+                    </>
+                }
             </View>
         </View>
     )

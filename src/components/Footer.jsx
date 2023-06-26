@@ -3,12 +3,14 @@ import { View, Button } from 'react-native';
 
 import styles from '../styles/styles';
 
-export default function Footer({text}) {
+const Footer = ({ navigation }) => {
     return (
         <View>
             <View style={styles.footer}>
-                <Button title={text} />
+                <Button title='Sair' onPress={() => navigation.navigate('Home')} />
             </View>
         </View>
     )
 }
+
+export default Footer;
