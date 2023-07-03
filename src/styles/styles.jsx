@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     padding: 2,
     paddingLeft: 12,
   },
-  title:{
+  title: {
     marginTop: 10,
     color: 'white',
     fontWeight: 'bold',
@@ -47,11 +47,28 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25,
     padding: 20,
   },
-  header: {
-    paddingTop: 30,
-    backgroundColor: "#606",
+  list: {
+    backgroundColor: '#969',
+    padding: 10,
+    margin: 10,
+    width: 'auto',
+    borderRadius: 10,
+  },
+  titleList: {
+    color: 'white',
+    fontSize: 25,
+    textAlign: 'center',
+    fontWeight: 'bold',
     paddingBottom: 5,
-    paddingHorizontal: 5,
+    borderBottomColor: 'white',
+    borderBottomWidth: 1,
+    marginBottom: 10,
+  },
+  textList: {
+    color: 'white',
+    fontSize: 18,
+    textAlign: 'left',
+    margin: 2,
   },
   boxBattery: {
     width: 300,

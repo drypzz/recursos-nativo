@@ -1,20 +1,18 @@
 import * as Contacts from 'expo-contacts';
+import React, { useCallback, useState } from 'react';
 
 import { View, Text, FlatList } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-
-import { useCallback, useState } from 'react';
+import Items from '../components/Items';
 
 import styles from '../styles/styles';
 
-import Items from '../components/Items';
-
-
 const ContactsInfo = () => {
     const [contacts, setContacts] = useState();
+    const [filteredContacts, setFilteredContacts] = useState([]);
 
     async function loadContacts(){
         const { data } = await Contacts.getContactsAsync({
@@ -23,8 +21,21 @@ const ContactsInfo = () => {
                 Contacts.Fields.PhoneNumbers
             ]
         })
-        setContacts(data);
-    }
+
+        if (data.length > 0) {
+            setContacts(data);
+            setFilteredContacts(data);
+        }
+    };
+
+    const filterContacts = (searchText) => {
+        const filtered = contacts.filter((contact) => {
+            const name = `${contact.firstName} ${contact.lastName}`.toLowerCase();
+            return name.includes(searchText.toLowerCase());
+        });
+        
+        setFilteredContacts(filtered);
+    };
 
     useFocusEffect(
         useCallback(() => {
@@ -41,6 +52,7 @@ const ContactsInfo = () => {
         <View  style={styles.container}>
             <Header title='Contato' />
             <View style={styles.center}>
+            <TextInput placeholder="Search" onChangeText={filterContacts} style={{ paddingHorizontal: 16, paddingVertical: 8 }} />
                 {contacts ?
                     <FlatList
                         style={{gap: 10, flex: 1}} 
