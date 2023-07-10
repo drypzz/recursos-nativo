@@ -75,6 +75,24 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 10,
   },
+
+  // ssss
+  containerScanner: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  dataContainerScanner: {
+    backgroundColor: 'white',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 10,
+    marginTop: 20,
+  },
+  dataTextScanner: {
+    fontSize: 16,
+    marginBottom: 10,
+  },
 });
 
 export default styles;

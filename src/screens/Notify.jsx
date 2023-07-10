@@ -47,6 +47,25 @@ function Notify(){
         }, 10000);
     };
 
+    async function scheduleNotify(time){
+        await Notifications.scheduleNotificationAsync({
+            content: {
+              title: 'Notificação agendada',
+              body: 'Corpo da notificação agendada',
+              subtitle: 'Subtitulo da notificação agendada',
+                data: {
+                    data: 'goes here'
+                },
+            },
+            trigger: {
+              seconds: time,
+              repeats: false,
+            },
+        });
+
+        alert('Notificação agendada para daqui ' + time + ' segundos');
+    };
+
     const lastNotify = Notifications.useLastNotificationResponse();
 
     const getLastNotification = async () => {
@@ -67,7 +86,7 @@ function Notify(){
 
                     <Button title='Ler ultima notificações clicada' onPress={() => getLastNotification()} />
 
-                    <Button title='Ler notificações não clicada' onPress={() => {}} />
+                    <Button title='Agendar uma notificação para daqui 10 seg.' onPress={() => {scheduleNotify(10)}} />
 
                 </View>
             <Footer text='Sair' />

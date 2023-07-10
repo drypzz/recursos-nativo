@@ -9,6 +9,7 @@ import BatteryInfo from './screens/BatteryInfo';
 import MyScreenOrientation from './screens/MyScreenOrientation';
 import Notify from './screens/Notify';
 import ContactsInfo from './screens/ContactsInfo';
+import BarCodeScannerScreen from './screens/BarCodeScannerScreen';
 
 const Stack = createStackNavigator();
 
@@ -22,6 +23,7 @@ const RootNavigation = () => {
                 <Stack.Screen name='MyScreenOrientation' component={MyScreenOrientation} options={{headerShown: false}} />
                 <Stack.Screen name='Notify' component={Notify} options={{headerShown: false}} />
                 <Stack.Screen name='ContactsInfo' component={ContactsInfo} options={{headerShown: false}} />
+                <Stack.Screen name='ScannerScreen' component={BarCodeScannerScreen} options={{headerShown: false}} />
             </Stack.Navigator>
         </NavigationContainer>
     )

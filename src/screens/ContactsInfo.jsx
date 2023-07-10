@@ -1,8 +1,8 @@
 import * as Contacts from 'expo-contacts';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
-import { View, Text, FlatList } from 'react-native';
-import { useFocusEffect } from '@react-navigation/native';
+import { View, Text, FlatList, TextInput } from 'react-native';
+// import { useFocusEffect } from '@react-navigation/native';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -14,20 +14,6 @@ const ContactsInfo = () => {
     const [contacts, setContacts] = useState();
     const [filteredContacts, setFilteredContacts] = useState([]);
 
-    async function loadContacts(){
-        const { data } = await Contacts.getContactsAsync({
-            fields: [
-                Contacts.Fields.Emails,
-                Contacts.Fields.PhoneNumbers
-            ]
-        })
-
-        if (data.length > 0) {
-            setContacts(data);
-            setFilteredContacts(data);
-        }
-    };
-
     const filterContacts = (searchText) => {
         const filtered = contacts.filter((contact) => {
             const name = `${contact.firstName} ${contact.lastName}`.toLowerCase();
@@ -37,26 +23,33 @@ const ContactsInfo = () => {
         setFilteredContacts(filtered);
     };
 
-    useFocusEffect(
-        useCallback(() => {
-            (async () => {
-                const { status } = await Contacts.requestPermissionsAsync();
-                if (status === 'granted') {
-                    await loadContacts();
+    useEffect(() => {
+        const loadContacts = async () => {
+            const { status } = await Contacts.requestPermissionsAsync();
+
+            if (status === 'granted') {
+                const { data } = await Contacts.getContactsAsync({
+                    fields: [Contacts.Fields.FirstName, Contacts.Fields.LastName, Contacts.Fields.PhoneNumbers],
+                });
+
+                if (data.length > 0) {
+                    setContacts(data);
+                    setFilteredContacts(data);
                 }
-            })();
-        }, [])
-    );
+            }
+        };
+
+        loadContacts();
+    }, []);
 
     return(
         <View  style={styles.container}>
             <Header title='Contato' />
             <View style={styles.center}>
-            <TextInput placeholder="Search" onChangeText={filterContacts} style={{ paddingHorizontal: 16, paddingVertical: 8 }} />
+            <TextInput placeholder='Search' onChangeText={filterContacts} style={{ paddingHorizontal: 5, paddingVertical: 2, borderBottomWidth: 1, borderBottomColor: '#000' }} />
                 {contacts ?
                     <FlatList
-                        style={{gap: 10, flex: 1}} 
-                        data={ contacts }
+                        data={filteredContacts}
                         keyExtractor={(item) => item.id.toString()}
                         renderItem={({ item }) => (
                             <Items 

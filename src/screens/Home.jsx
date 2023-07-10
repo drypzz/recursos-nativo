@@ -16,6 +16,7 @@ const Home = ({ navigation }) => {
                 <Button title='Orientação de tela' onPress={() => navigation.navigate('MyScreenOrientation')} />
                 <Button title='Notificações' onPress={() => navigation.navigate('Notify')} />
                 <Button title='Contatos' onPress={() => navigation.navigate('ContactsInfo')} />
+                <Button title='Scanner' onPress={() => navigation.navigate('ScannerScreen')} />
             </View>
         </View>
     )
