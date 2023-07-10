@@ -1,5 +1,5 @@
 import * as Contacts from 'expo-contacts';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { View, Text, FlatList, TextInput } from 'react-native';
 // import { useFocusEffect } from '@react-navigation/native';
