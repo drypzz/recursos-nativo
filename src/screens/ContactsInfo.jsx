@@ -16,8 +16,10 @@ const ContactsInfo = () => {
 
     const filterContacts = (searchText) => {
         const filtered = contacts.filter((contact) => {
-            const name = `${contact.firstName} ${contact.lastName}`.toLowerCase();
-            return name.includes(searchText.toLowerCase());
+            const name = `${contact.firstName}`.toLowerCase();
+            const phone = `${contact.phoneNumbers[0].number}`.toLowerCase();
+            
+            return name.includes(searchText.toLowerCase()) || phone.includes(searchText.toLowerCase());
         });
         
         setFilteredContacts(filtered);
@@ -29,7 +31,7 @@ const ContactsInfo = () => {
 
             if (status === 'granted') {
                 const { data } = await Contacts.getContactsAsync({
-                    fields: [Contacts.Fields.FirstName, Contacts.Fields.LastName, Contacts.Fields.PhoneNumbers],
+                    fields: [Contacts.Fields.FirstName, Contacts.Fields.PhoneNumbers],
                 });
 
                 if (data.length > 0) {
